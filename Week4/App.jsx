@@ -51,7 +51,7 @@ function ObjectsInJSX() {
   );
 }
 
-const cat = {
+const catObject = {
   name: 'Goldfish',
   theme: {
     backgroundColor: 'blue',
@@ -61,8 +61,8 @@ const cat = {
 
 function ManyExpressions() {
 	return (
-		<div style={cat.theme}>
-			<h1>{cat.name} is a cat</h1>
+		<div style={catObject.theme}>
+			<h1>{catObject.name} is a cat</h1>
 				<img
 					className="cat"
 					src="https://www.cdc.gov/healthy-pets/media/images/2024/04/Cat-on-couch.jpg"
