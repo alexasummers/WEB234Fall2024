@@ -1,5 +1,3 @@
-(only partially done)
-
 function BasicList() {
 	return (
 		<ul>
@@ -31,7 +29,7 @@ const characters = [
 }
 
 function UsingAFilter() {
-const charactersWithDetails = [{
+const characters = [{
 	id: 0,
 	name: 'Spongebob',
 	species: 'Sponge',
@@ -53,16 +51,27 @@ const charactersWithDetails = [{
 	species: 'Starfish',
 	}];
 
-const thePeople = charactersWithDetails.filter(characters =>
-	characters.species === 'Starfish'
-	); //left off here
+const starfish = characters.filter(filteredCharacter =>
+	filteredCharacter.species === 'Starfish'
+	); 
+	
+const listItems = starfish.map(filteredCharacter =>
+	<li key={filteredCharacter.id}>
+		<b>{filteredCharacter.name}</b>
+		{' '} is known to be a {' '}
+		{filteredCharacter.species}
+	</li>);
+	
+return <ul>{listItems}</ul>
 }
+	
 export default function App() {
 	
-	<>
 	return (
-	<BasicList />
+	<>
 	<BasicConst />
-	);
+	<BasicList />
+	<UsingAFilter />
 	</>
+	);
 }
