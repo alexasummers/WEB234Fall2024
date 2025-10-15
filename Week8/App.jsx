@@ -131,6 +131,7 @@ return (
 <>
 <ImAButton />
 <ButtonWithHandler />
+<ButtonWithToggle />
     <div>
       <EventHandlerProps message="You pressed the button!">
         Press the button?
