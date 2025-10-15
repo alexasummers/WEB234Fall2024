@@ -9,9 +9,38 @@ function ImAButton() {
   );
 }
 
+function ButtonWithHandler() {
+	function handleClick() {
+		alert('Good choice.');
+	}
+
+	return (
+		<button onClick={handleClick}>
+		Click me
+		</button>
+	);
+	
+	{/*can also be written as: 
+	<button onClick={function handleClick() {
+		alert('You clicked me!');
+		}}>*/}
+		
+	{/*
+	
+	illegal (because it fires immediately during rendering with no clicks): <button onClick={handleClick()}>
+	
+	not illegal (because it waits for the user's click): <button onClick={handleClick}>
+	
+	illegal: <button onClick={alert('...')}>
+	
+	not illegal: <button onClick={() => alert('...')}>
+	
+	*/}
+}
+
 let isParagraphVisible = false; // This tracks visibility outside the component
 
-function ButtonWithHandler() {
+function ButtonWithToggle() {
   function handleClick() {
     const paragraph = document.getElementById('toggle-paragraph');
     if (paragraph) {
@@ -26,7 +55,7 @@ function ButtonWithHandler() {
         Show/Hide Paragraph
       </button>
       <p id="toggle-paragraph" style={{ display: 'none' }}>
-        👋 Hello! You toggled me!
+        You have toggled me.
       </p>
     </>
   );
