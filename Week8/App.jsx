@@ -138,6 +138,7 @@ export default function App() {
 return (
 <>
 <ImAButton />
+<ImAButtonWithColor />
 <ButtonWithHandler />
 <ButtonWithToggle />
     <div>
