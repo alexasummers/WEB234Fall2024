@@ -1,6 +1,9 @@
 function ImAButton() {
- return (
-    <button>
+  return (
+    <button
+      onMouseEnter={(e) => e.target.style.backgroundColor = 'lightblue'}
+      onMouseLeave={(e) => e.target.style.backgroundColor = ''}
+    >
       I am a button.
     </button>
   );
