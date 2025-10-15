@@ -9,33 +9,27 @@ function ImAButton() {
   );
 }
 
-function ButtonWithHandler() {
-	function handleClick() {
-		alert('Good choice.');
-	}
+let isParagraphVisible = false; // This tracks visibility outside the component
 
-	return (
-		<button onClick={handleClick}>
-		Click me
-		</button>
-	);
-	
-	{/*can also be written as: 
-	<button onClick={function handleClick() {
-		alert('You clicked me!');
-		}}>*/}
-		
-	{/*
-	
-	illegal (because it fires immediately during rendering with no clicks): <button onClick={handleClick()}>
-	
-	not illegal (because it waits for the user's click): <button onClick={handleClick}>
-	
-	illegal: <button onClick={alert('...')}>
-	
-	not illegal: <button onClick={() => alert('...')}>
-	
-	*/}
+function ButtonWithHandler() {
+  function handleClick() {
+    const paragraph = document.getElementById('toggle-paragraph');
+    if (paragraph) {
+      isParagraphVisible = !isParagraphVisible;
+      paragraph.style.display = isParagraphVisible ? 'block' : 'none';
+    }
+  }
+
+  return (
+    <>
+      <button onClick={handleClick}>
+        Show/Hide Paragraph
+      </button>
+      <p id="toggle-paragraph" style={{ display: 'none' }}>
+        👋 Hello! You toggled me!
+      </p>
+    </>
+  );
 }
 
 function EventHandlerProps({message, children}) {
