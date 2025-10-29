@@ -1,71 +1,39 @@
 import { useState } from 'react';
 
 const characterList = [{
-  name: 'Spongebob',
-  house: 'Pineapple',
-  species: 'Sponge'
-}, {
-  name: 'Squidward',
-  house: 'Face??',
-  species: 'Squid'
-}, {
-  name: 'Patrick',
-  house: 'Rock',
-  species: 'Starfish'
-}];
-
-
-function ThisFunctionWillNotWork () {
+	name: 'Spongebob',
+	house: 'Pineapple',
+	species: 'Sponge'
+	}, {
+	name: 'Squidward',
+	houe: 'Face??',
+	species: 'Squid'
+	}, {
+	name: 'Patrick',
+	house: 'Rock',
+	species: 'Starfish'
+	}];
+	
+function ThisFunctionWillNotWork() {
 	var index = 0;
-
+	
 	function handleClick() {
 		index = index + 1;
 	}
-
+	
 	var characters = characterList[index];
-
-	return (
-		<>	
-			<h1>-------------------------------------------------</h1>
-			<button onClick={handleClick}>
-			Next
-			</button>
-			<h2>
-				<i>{characters.name} </i> 
-					lives in a {characters.house}
-			</h2>
-			<h3>  
-				({index + 1} of {characterList.length})
-			</h3>
-			<p>
-				{characters.name} is a {characters.species}.
-			</p>
-		</>
-	);
-}
-
-{/*add the import { useState } from 'react'; to the top and replace var index = 0; with const [index, setIndex] = useState(0);*/}
-
-function ThisFunctionWillWork () {
-	const [index, setIndex] = useState(0);
-
-	function handleClick() {
-		setIndex(index + 1);
-	}
-
-	var characters = characterList[index];
-
+	
 	return (
 		<>
-			<h1>-------------------------------------------------</h1>
+			<h1>----------------------------------</h1>
 			<button onClick={handleClick}>
 			Next
 			</button>
 			<h2>
 				<i>{characters.name} </i> 
-					lives in a {characters.house}
+				lives in a {characters.house}
 			</h2>
-			<h3>  
+			<h3>
 				({index + 1} of {characterList.length})
 			</h3>
 			<p>
@@ -75,31 +43,60 @@ function ThisFunctionWillWork () {
 	);
 }
 
-function MultipleStates () {
+function ThisFunctionWillWork() {
+	const [index, setIndex] = useState(0);
+	
+	function handleClick() {
+		  setIndex((index + 1) % characterList.length);
+	}
+	
+	var characters = characterList[index];
+	
+	return (
+		<>
+			<h1>----------------------------------</h1>
+			<button onClick={handleClick}>
+			Next
+			</button>
+			<h2>
+				<i>{characters.name} </i> 
+				lives in a {characters.house}
+			</h2>
+			<h3>
+				({index + 1} of {characterList.length})
+			</h3>
+			<p>
+				{characters.name} is a {characters.species}.
+			</p>
+		</>
+	);
+}
+
+function MultipleStates() {
 	const [index, setIndex] = useState(0);
 	const [speciesToClick, setSpecies] = useState(false);
-
+	
 	function handleNextClick() {
-		setIndex(index + 1);
+		  setIndex((index + 1) % characterList.length);
 	}
 	
 	function handleSpeciesClick() {
-    setSpecies(!speciesToClick);
+		setSpecies(!speciesToClick);
 	}
-
+	
 	var characters = characterList[index];
-
+	
 	return (
 		<>
-			<h1>-------------------------------------------------</h1>
+			<h1>----------------------------------</h1>
 			<button onClick={handleNextClick}>
 			Next
 			</button>
 			<h2>
 				<i>{characters.name} </i> 
-					lives in a {characters.house}
+				lives in a {characters.house}
 			</h2>
-			<h3>  
+			<h3>
 				({index + 1} of {characterList.length})
 			</h3>
 			<button onClick={handleSpeciesClick}>
@@ -110,15 +107,13 @@ function MultipleStates () {
 	);
 }
 
-
-
 export default function App() {
 	return(
-		<>
-			<ThisFunctionWillNotWork />
-			<ThisFunctionWillWork />
-			<MultipleStates />
-			<MultipleStates /> {/*This is independent of the one above it*/}
-		</>
+	<>
+		<ThisFunctionWillNotWork />
+		<ThisFunctionWillWork />
+		<MultipleStates />
+		<MultipleStates />
+	</>
 	);
 }
